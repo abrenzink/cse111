@@ -14,7 +14,7 @@ print(f"The approximate volume is {volume} liters")
 answer = input(f"Would like to buy a tyre with {d}? (Type y/n)")
 
 if answer == "y":
-    phone = input("Please, enter you phone number. We will get in contact.")
+    phone = input("Please, enter you phone number. We will get in contact soon.")
 
 currentDateTime = datetime.now()
 
