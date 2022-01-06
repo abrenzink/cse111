@@ -12,7 +12,7 @@ subtotal = float(input("Please, inform the subtotal"))
 currentDateTime = datetime.now()
 dayOfWeek = currentDateTime.weekday()
 
-if subtotal > 50 and dayOfWeek == 1 or dayOfWeek == 2 :
+if subtotal > 50 and (dayOfWeek == 1 or dayOfWeek) == 2 :
     discount = subtotal * 0.1
     subtotal = subtotal - discount
     salesTax = subtotal * 0.06
