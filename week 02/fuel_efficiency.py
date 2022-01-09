@@ -20,7 +20,6 @@ def miles_per_gallon(start_miles, end_miles, amount_gallons):
         amount_gallons: A fuel amount in U.S. gallons.
     Return: Fuel efficiency in miles per gallon.
     """
-   
     return (end_miles - start_miles)/amount_gallons
 
 def lp100k_from_mpg(mpg):
