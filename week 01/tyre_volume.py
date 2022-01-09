@@ -30,4 +30,4 @@ with open("volumes.txt", "at") as volumesFile:
     print(f"----------------------------", file=volumesFile)
     print(f"", file=volumesFile)
 
-print(f"Thank you for using our services.")
+print(f"Thanks for using our services.")
