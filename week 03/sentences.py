@@ -1,53 +1,31 @@
 import random
 
 def main():
-  
-    print("-----------Sentence 01-------------")
-    determiner = get_determiner(1)
-    noun = get_noun(1)
-    verb = get_verb(1, "past")
-    print(f"{determiner} {noun} {verb}")
-    print("-----------------------------------")
-    print("")
-    print("")
-    print("-----------Sentence 02-------------")
-    determiner = get_determiner(1)
-    noun = get_noun(1)
-    verb = get_verb(1, "present")
-    print(f"{determiner} {noun} {verb}")
-    print("-----------------------------------")
-    print("")
-    print("")
-    print("-----------Sentence 03-------------")
-    determiner = get_determiner(1)
-    noun = get_noun(1)
-    verb = get_verb(1, "future")
-    print(f"{determiner} {noun} {verb}")
-    print("-----------------------------------")
-    print("")
-    print("")
-    print("-----------Sentence 04-------------")
-    determiner = get_determiner(2)
-    noun = get_noun(2)
-    verb = get_verb(2, "past")
-    print(f"{determiner} {noun} {verb}")
-    print("-----------------------------------")
-    print("")
-    print("")
-    print("-----------Sentence 05-------------")
-    determiner = get_determiner(2)
-    noun = get_noun(2)
-    verb = get_verb(2, "present")
-    print(f"{determiner} {noun} {verb}")
-    print("-----------------------------------")
-    print("")
-    print("")
-    print("-----------Sentence 06-------------")
-    determiner = get_determiner(2)
-    noun = get_noun(2)
-    verb = get_verb(2, "future")
-    print(f"{determiner} {noun} {verb}")
-    print("-----------------------------------")
+    
+    quantity = 1
+    tense = "past"
+    get_sentence(quantity, tense)
+
+    quantity = 1
+    tense = "present"
+    get_sentence(quantity, tense)
+
+    quantity = 1
+    tense = "future"
+    get_sentence(quantity, tense)
+
+    quantity = 2
+    tense = "past"
+    get_sentence(quantity, tense)
+
+    quantity = 2
+    tense = "present"
+    get_sentence(quantity, tense)
+
+    quantity = 4
+    tense = "future"
+    get_sentence(quantity, tense)
+
 
 
 def get_determiner(quantity):
@@ -58,8 +36,7 @@ def get_determiner(quantity):
         words = ["two", "some", "many", "the"]
 
     word = random.choice(words)
-    cap_word = word.capitalize()
-    return cap_word
+    return word
 
 def get_noun(quantity):
   
@@ -90,5 +67,41 @@ def get_verb(quantity, tense):
 
     word = random.choice(words)
     return word
+
+def get_preposition():
+    words = ["about", "above", "across", "after", "along",
+        "around", "at", "before", "behind", "below",
+        "beyond", "by", "despite", "except", "for",
+        "from", "in", "into", "near", "of",
+        "off", "on", "onto", "out", "over",
+        "past", "to", "under", "with", "without"]
+
+    word = random.choice(words)
+    return word  
+
+def get_prepositional_phrase():
+
+    quantity = random.randint(1,2)
+
+    preposition = get_preposition()
+    determiner = get_determiner(quantity)
+    noun = get_noun(quantity)
+    space = " "
+
+    prepositional_phrase = preposition + space + determiner + space + noun
+
+    return prepositional_phrase
+
+def get_sentence(quantity, tense):
+
+    print("")
+    print(f"---------------Sentence-----------------")
+    determiner = get_determiner(quantity)
+    noun = get_noun(quantity)
+    verb = get_verb(quantity, tense)
+    prep_phrase = get_prepositional_phrase()
+    print(f"{determiner.capitalize()} {noun} {verb} {prep_phrase}")
+    print("-----------------------------------------")
+    print("")
 
 main()

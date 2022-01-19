@@ -2,18 +2,17 @@
 
 from sentences import get_determiner, get_noun, get_verb
 import random
-from pytest import approx
 import pytest
 
 def test_get_determiner():
+
     # 1. Test the single determiners.
     single_determiners = ["a", "one", "the"]
 
     for _ in range(4):
         word = get_determiner(1)
-        cap_word = word.capitalize()
         
-        assert cap_word in single_determiners
+        assert word in single_determiners
 
     # 2. Test the plural determiners.
 
