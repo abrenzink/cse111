@@ -1,6 +1,6 @@
 # test_sentences.py
 
-from sentences import get_determiner, get_noun, get_verb
+from sentences import get_determiner, get_noun, get_verb, get_preposition, get_prepositional_phrase
 import random
 import pytest
 
@@ -76,6 +76,45 @@ def test_get_verb():
     for _ in range(4):
         word = get_verb(5, "future")
         assert word in future_verbs
+
+def test_get_preposition():
+    prepositions = ["about", "above", "across", "after", "along",
+        "around", "at", "before", "behind", "below",
+        "beyond", "by", "despite", "except", "for",
+        "from", "in", "into", "near", "of",
+        "off", "on", "onto", "out", "over",
+        "past", "to", "under", "with", "without"]
+
+    for _ in range(4):
+        word = get_preposition()
+        assert word in prepositions
+
+def test_get_prepositional_phrase():
+
+    for _ in range(4):
+        words = get_prepositional_phrase().split(' ')
+        assert len(words) == 3
+
+    # Test prepositions.
+    prepositions = ["about", "above", "across", "after", "along",
+        "around", "at", "before", "behind", "below",
+        "beyond", "by", "despite", "except", "for",
+        "from", "in", "into", "near", "of",
+        "off", "on", "onto", "out", "over",
+        "past", "to", "under", "with", "without"]
+
+    for _ in range(4):
+        words = get_prepositional_phrase().split(' ')        
+        assert words[0] in prepositions
+
+    # Test 
+    for _ in range(4):
+        words = get_prepositional_phrase().split(' ')        
+        assert words[1] in single_determiners
+     
+
+
+
     
 
 pytest.main(["-v", "--tb=line", "-rN", __file__])
