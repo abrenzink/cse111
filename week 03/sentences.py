@@ -4,27 +4,27 @@ def main():
     
     quantity = 1
     tense = "past"
-    get_sentence(quantity, tense)
+    print_sentence(quantity, tense)
 
     quantity = 1
     tense = "present"
-    get_sentence(quantity, tense)
+    print_sentence(quantity, tense)
 
     quantity = 1
     tense = "future"
-    get_sentence(quantity, tense)
+    print_sentence(quantity, tense)
 
     quantity = 2
     tense = "past"
-    get_sentence(quantity, tense)
+    print_sentence(quantity, tense)
 
     quantity = 2
     tense = "present"
-    get_sentence(quantity, tense)
+    print_sentence(quantity, tense)
 
     quantity = 4
     tense = "future"
-    get_sentence(quantity, tense)
+    print_sentence(quantity, tense)
 
 
 
@@ -92,16 +92,17 @@ def get_prepositional_phrase():
 
     return prepositional_phrase
 
-def get_sentence(quantity, tense):
+def print_sentence(quantity, tense):
 
     print("")
-    print(f"---------------Sentence-----------------")
+    print(f"---------------------Sentence-----------------------")
     determiner = get_determiner(quantity)
     noun = get_noun(quantity)
     verb = get_verb(quantity, tense)
-    prep_phrase = get_prepositional_phrase()
-    print(f"{determiner.capitalize()} {noun} {verb} {prep_phrase}")
-    print("-----------------------------------------")
+    prep_phrase1 = get_prepositional_phrase()
+    prep_phrase2 = get_prepositional_phrase()
+    print(f"{determiner.capitalize()} {noun} {prep_phrase1} {verb} {prep_phrase2}")
+    print("----------------------------------------------------")
     print("")
 
 main()

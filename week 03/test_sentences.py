@@ -107,14 +107,22 @@ def test_get_prepositional_phrase():
         words = get_prepositional_phrase().split(' ')        
         assert words[0] in prepositions
 
-    # Test 
+    # Test determiners.
+    determiners = ["a", "one", "the", "two", "some", "many"]
+
     for _ in range(4):
         words = get_prepositional_phrase().split(' ')        
-        assert words[1] in single_determiners
+        assert words[1] in determiners
      
+    # Test nouns.
+    nouns = ["bird", "boy", "car", "cat", "child",
+        "dog", "girl", "man", "rabbit", "woman", 
+        "birds", "boys", "cars", "cats", "children",
+        "dogs", "girls", "men", "rabbits", "women"]
 
+    for _ in range(4):
+        words = get_prepositional_phrase().split(' ')        
+        assert words[2] in nouns
 
-
-    
 
 pytest.main(["-v", "--tb=line", "-rN", __file__])
