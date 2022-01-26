@@ -99,7 +99,15 @@ def make_periodic_table():
         "Zn",	"Zinc",	65.38,
         "Zr",	"Zirconium", 91.224]
 
-    return [list[x:x+3] for x in range(0, len(list), 3)]
+    #return [list[x: x+3] for x in range(0, len(list), 3)]
+
+    new_list = []
+
+    for x in range(0, len(list), 3):
+    
+        new_list += [list[x:x+3]]
+
+    return new_list
 
 
 if __name__ == "__main__":
