@@ -1,3 +1,10 @@
+import datetime
+
+date = datetime.date.today()
+year = int(date.strftime("%Y"))
+
+
+
 # Each value in the people dictionary is a list. These
 # are the indexes of the elements in those lists.
 NAME_INDEX = 0
@@ -100,7 +107,14 @@ def print_death_age(people_dict):
             person_key: [name, gender, birth_year, death_year]
     Return: nothing
     """
-    pass
+    for key, value in people_dict.items():
+        
+        name = value[NAME_INDEX]
+        death_year = value[DEATH_YEAR_INDEX]
+
+        ageAtDeath = year - death_year
+
+        print(f"{name} | Age at death: {ageAtDeath}")
 
 
 def count_genders(people_dict):
@@ -113,7 +127,20 @@ def count_genders(people_dict):
             person_key: [name, gender, birth_year, death_year]
     Return: nothing
     """
-    pass
+    women = 0
+    men = 0
+
+    for key, value in people_dict.items():
+
+        gender = value[GENDER_INDEX]
+
+        if gender == "M":
+            men += 1
+        elif gender == "F":
+            women += 1
+    
+    print(f"Number of men: {men} | Number of women: {women}")
+
 
 
 def print_marriages(marriages_dict, people_dict):
@@ -130,8 +157,27 @@ def print_marriages(marriages_dict, people_dict):
             person_key: [name, gender, birth_year, death_year]
     Return: nothing
     """
-    pass
 
+    for key, value in marriages_dict.items():
+
+        husband = value[HUSBAND_KEY_INDEX]
+        wife = value[WIFE_KEY_INDEX]
+        wedding = value[WEDDING_YEAR_INDEX]
+
+        husband_list = people_dict[husband]
+        husband_name = husband_list[NAME_INDEX]
+        husband_birth = husband_list[BIRTH_YEAR_INDEX]
+        husband_age = wedding - husband_birth
+
+        wife_list = people_dict[wife]
+        wife_name = wife_list[NAME_INDEX]
+        wife_birth = wife_list[BIRTH_YEAR_INDEX]
+        wife_age = wedding - wife_birth
+                
+        print("----------------------Wedding----------------------")
+        print(f"Husband: {husband_name}, age: {husband_age}")
+        print(f"Wife: {wife_name}, age: {wife_age}")
+        print(f"Wedding year: {wedding}")
 
 # If this file was executed like this:
 # > python teach_solution.py
