@@ -1,14 +1,36 @@
 def main():
     
+    known_molecules_dict = {
+        "Al2O3": "aluminum oxide",
+        "CH3OH": "methanol",
+        "C2H6O": "ethanol",
+        "C2H5OH": "ethanol",
+        "C3H8O": "isopropyl alcohol",
+        "C3H8": "propane",
+        "C4H10": "butane",
+        "C6H6": "benzene",
+        "C6H14": "hexane",
+        "C8H18": "octane",
+        "CH3(CH2)6CH3": "octane",
+        "C13H18O2": "ibuprofen",
+        "C13H16N2O2": "melatonin",
+        "Fe2O3": "iron oxide",
+        "FeS2": "iron pyrite",
+        "H2O": "water"
+    }
 
     formula = input("Type the chemical formula for the molecule: ")
-    mass = input("Type the mass of the chemical sample in grams: ")
+    mass = float(input("Type the mass of the chemical sample in grams: "))
 
     table = make_periodic_table()
     symbol_quantity_list = parse_formula(formula, table)
     molar_mass = compute_molar_mass(symbol_quantity_list, table)
+    formula_name = get_formula_name(formula, known_molecules_dict)
 
+    print(f"--------------------{formula_name.upper()}--------------------")
     print(f"Molar mass: {molar_mass}")
+    print(f"Number of moles: {round(mass / molar_mass, 2)}")
+    print("--------------------------------------------------")
 
 def make_periodic_table():
     list = ["Ac",	"Actinium",	227,
@@ -122,7 +144,6 @@ class FormulaError(ValueError):
     """FormulaError is the type of error that
     parse_formula will raise if a formula is invalid.
     """
-
 
 def parse_formula(formula, periodic_table_dict):
     """Convert a chemical formula for a molecule into a compound list
@@ -263,6 +284,23 @@ def compute_molar_mass(symbol_quantity_list, periodic_table_dict):
 
     # Return the total mass.
     return total_mass
+
+
+def get_formula_name(formula, known_molecules_dict):
+    """Try to find formula in the known_molecules_dict.
+    If formula is in the known_molecules_dict, return
+    the name of the chemical formula; otherwise return
+    "unknown compound".
+    """
+
+    if formula in known_molecules_dict:
+
+        formula_name = known_molecules_dict[formula]
+        return formula_name
+
+    else:
+        return "----------"
+      
 
 if __name__ == "__main__":
     main()
