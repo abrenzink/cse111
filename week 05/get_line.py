@@ -103,7 +103,6 @@ def read_list(filename):
     # Return the list that contains the lines of text.
     return text_lines
 
-
 # If this file was executed like this:
 # > python teach_solution.py
 # then call the main function. However, if this file
