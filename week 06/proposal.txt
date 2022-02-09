@@ -1,0 +1,37 @@
+Proposal for a Student Chosen Program
+
+(This is a proposal. All proposals are written with our best knowledge
+at the beginning of a project. As we progress from the beginning to the
+end of a project, we gain more knowledge, and some of the ideas we
+proposed change. This is part of completing any project and is fine.
+However, we still must write a proposal so that our teachers or
+supervisors know what we intend to do. Please answer each of the
+following questions to the best of your knowledge.)
+
+1. What is the title of your program?
+
+Virtual E6B flight computer
+
+2. What real world problem will your program address or help to solve?
+
+My python program is a virtual version of the so know flight computer
+that calculates crucial flight information, that guarantees safe flight planning.
+
+3. What will you learn from developing this program?
+
+I want to be more confident working with python. If there is enough time, I'd like to deal with GUI in python, and create a more friendly program. 
+
+4. What Python modules will your program use? (Some examples are: csv,
+datetime, functools, matplotlib, math, pandas, pytest, random, requests,
+and tkinter.)
+
+Math, pytest, random (for testing), tkinter (if there is available time).
+
+5. Will you separate your Python program into functions that each
+perform a single task?
+
+Yes. Each calculus will be completed by a specific function.
+
+6. Will you write test functions to test many of your program functions?
+
+Yes.
