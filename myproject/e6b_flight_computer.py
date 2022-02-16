@@ -11,18 +11,22 @@ def main():
             wind_direction = float(wind_direction_entry.get())
             wind_speed = float(wind_speed_entry.get())
 
-            correction_angle = compute_wind_correction_angle(wind_speed,wind_direction,desired_course,true_speed)
-            true_ground_speed = compute_true_ground_speed(wind_speed, wind_direction, desired_course, true_speed, correction_angle)
+            if true_speed > 0 and true_speed > wind_speed:
+                correction_angle = compute_wind_correction_angle(wind_speed,wind_direction,desired_course,true_speed)
+                true_ground_speed = compute_true_ground_speed(wind_speed, wind_direction, desired_course, true_speed, correction_angle)
 
-            wind_correction_label.config(text=f"Wind correction angle: {round(correction_angle)}")
-            true_ground_speed_label.config(text=f"True ground speed: {round(true_ground_speed)}")
+                wind_correction_label.config(text=f"Wind correction angle: {round(correction_angle)}")
+                true_ground_speed_label.config(text=f"True ground speed: {round(true_ground_speed)}")
 
-            posx = 150
-            posy = 125
-            angle = desired_course + correction_angle
+                posx = 150
+                posy = 125
+                angle = desired_course + correction_angle
 
-            canvas.create_line(posx, posy, math.cos(angle), math.sin(angle), fill="white", width=5)    
-
+                canvas.create_line(posx, posy, math.cos(angle), math.sin(angle), fill="white", width=5)    
+            
+            else:
+                wind_correction_label.config(text="True speed must be > than 0.")
+                true_ground_speed_label.config(text=f"True speed must be > than wind speed.")
 
         except ValueError:
             wind_correction_label.config(text="Value Error.")
@@ -105,12 +109,16 @@ def main():
 def compute_wind_correction_angle(wind_speed, wind_direction, desired_course, true_airspeed):
     x = math.pi * (wind_direction - desired_course) / 180
 
-    wind_correction_angle = 180 / math.pi * math.asin(wind_speed / true_airspeed * math.sin(x))
+    y = (wind_speed / true_airspeed) * math.sin(x)
 
+    z = math.asin(y)
+
+    wind_correction_angle = (180 / math.pi) * z
+    print(wind_correction_angle)
     return wind_correction_angle
 
 def compute_true_ground_speed(wind_speed, wind_direction, desired_course, true_airspeed, wind_correction_angle):
-    x = math.pi * (desired_course - wind_direction + wind_correction_angle) /180
+    x = math.pi * (desired_course - wind_direction + wind_correction_angle) / 180
 
     ground_speed = math.pow(true_airspeed * true_airspeed + wind_speed * wind_speed - 
         2 * true_airspeed * wind_speed * math.cos(x), 1/2)
